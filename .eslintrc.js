@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
     extends: [
         'plugin:react/recommended',
@@ -56,7 +57,12 @@ module.exports = {
         // Правило, которое запрещает нижние подчеркивания
         'no-underscore-dangle': 'off',
         // Чтобы i18next не требовал везде перевод! А markupOnly делает, чтобы i18next ругался только на файлы jsx tsx
-        'i18next/no-literal-string': ['error', { markupOnly: true }],
+        'i18next/no-literal-string': ['error',
+            {
+                markupOnly: true,
+                ignoreAttribute: ['data-testid'],
+            },
+        ],
         // Игнор длинные комментариев
         'max-len': ['error',
             {
@@ -68,4 +74,12 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts, tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };
