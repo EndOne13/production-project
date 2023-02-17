@@ -17,23 +17,18 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: [
-        'react',
-        '@typescript-eslint',
-        'i18next',
-    ],
+    plugins: ['react', '@typescript-eslint', 'i18next'],
     rules: {
-        // Свойство, которое указывает какие должны быть размером отступы
+    // Свойство, которое указывает какие должны быть размером отступы
         'react/jsx-indent': [2, 4],
         // Отступы для props
         'react/jsx-indent-props': [2, 4],
         // Так же количество отступов
         indent: [2, 4],
         // Свойство, указываем расширения в которые jsx будет разрешен
-        'react/jsx-filename-extension': [
-            2,
-            { extensions: ['.js', '.jsx', '.tsx'] },
-        ],
+        'react/jsx-filename-extension': [2, {
+            extensions: ['.js', '.jsx', '.tsx'],
+        }],
         // Правило, которое ругается на абсолютные пути import
         'import/no-unresolved': 'off',
         // Свойство, которое рекомендует default export
@@ -57,29 +52,23 @@ module.exports = {
         // Правило, которое запрещает нижние подчеркивания
         'no-underscore-dangle': 'off',
         // Чтобы i18next не требовал везде перевод! А markupOnly делает, чтобы i18next ругался только на файлы jsx tsx
-        'i18next/no-literal-string': ['error',
-            {
-                markupOnly: true,
-                ignoreAttribute: ['data-testid', 'to'],
-            },
-        ],
+        'i18next/no-literal-string': ['error', {
+            markupOnly: true,
+            ignoreAttribute: ['data-testid', 'to'],
+        }],
         // Игнор длинные комментариев
-        'max-len': ['error',
-            {
-                ignoreComments: true,
-                code: 110,
-            },
-        ],
+        'max-len': ['error', {
+            ignoreComments: true,
+            code: 110,
+        }],
     },
     globals: {
         __IS_DEV__: true,
     },
-    overrides: [
-        {
-            files: ['**/src/**/*.test.{ts, tsx}'],
-            rules: {
-                'i18next/no-literal-string': 'off',
-            },
+    overrides: [{
+        files: ['**/src/**/*.test.{ts, tsx}'],
+        rules: {
+            'i18next/no-literal-string': 'off',
         },
-    ],
+    }],
 };
